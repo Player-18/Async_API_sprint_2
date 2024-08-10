@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "functional-tests"
+version = "0.1.0"
+description = ""
+authors = ["Artem Volinets <artemvol1998@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+elasticsearch = "8.10.1"
+pydantic = "1.10.2"
+pytest = "7.4.3"
+pytest-asyncio = "0.21.1"
+python-dotenv = "1.0.1"
+redis = "5.0.4"
+aiohttp = "^3.10.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

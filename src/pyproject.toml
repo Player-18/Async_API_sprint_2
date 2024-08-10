@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "async-api-sprint-1"
+version = "0.1.0"
+description = ""
+authors = ["Misha Trofimov <mikevlg34@yandex.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "0.111.0"
+redis = "5.0.4"
+orjson = "^3.10.6"
+pydantic = "1.10.2"
+elasticsearch = {extras = ["async"], version = "^8.14.0"}
+gunicorn = "^22.0.0"
+psycopg = "^3.2.1"
+fastapi-cache2 = "^0.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

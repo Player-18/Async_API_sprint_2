@@ -1,0 +1,60 @@
+services:
+  backend:
+    build: ../../src
+    container_name: backend-test
+    env_file:
+      - .env
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  elasticsearch:
+    image: elasticsearch:8.14.3
+    container_name: elasticsearch-test
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    healthcheck:
+      test: curl -s http://elasticsearch-test:9200 >/dev/null || exit 1
+      interval: 20s
+      timeout: 10s
+      retries: 10
+    ports:
+      - "9200:9200"
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: 512M
+    volumes:
+      - elastic_test_volume:/usr/share/elasticsearch/data
+
+  redis:
+    image: redis:5.0.7-alpine
+    container_name: redis-test
+    restart: always
+    volumes:
+      - redis_test_volume:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+    env_file:
+      - .env
+    ports:
+      - "6379:6379"
+
+  functional-tests:
+    build: .
+    container_name: functional-test
+    env_file:
+      - .env
+    depends_on:
+      - backend
+
+volumes:
+  elastic_test_volume:
+  redis_test_volume:

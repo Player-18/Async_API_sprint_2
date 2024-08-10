@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "etl"
+version = "0.1.0"
+description = ""
+authors = ["Artem Volinets <artemvol1998@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10.12"
+elasticsearch = "8.14.0"
+psycopg = {version = "3.2.1", extras = ["binary"]}
+python-dotenv = "1.0.1"
+redis = "5.0.4"
+pydantic = "1.10.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

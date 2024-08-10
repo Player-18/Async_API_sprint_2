@@ -1,0 +1,42 @@
+/nginx/logs/
+/tests/functional/.env
+/src/.env
+.env
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Pycharm stuff
+.idea
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# media dir
+/reallocator/media/
+/inferit/static/*
+
+# cache
+/.mypy_cache
+
+# test utils
+/.coverage
+/coverage.xml
+
+# for MAC
+.DS_Store
